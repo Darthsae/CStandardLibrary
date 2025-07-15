@@ -2,21 +2,40 @@ cmake_minimum_required(VERSION 3.10.0)
 project(CStandardLibrary VERSION 0.1.0 LANGUAGES C)
 
 set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS TRUE)
-set(BUILD_SHARED_LIBS TRUE)
 set(a_outputDirectory "Lib")
+
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")
   add_compile_definitions(__DEBUG_ASSERTS__)
 endif()
+
 file(GLOB_RECURSE "${PROJECT_NAME}SourceFiles" "${CMAKE_CURRENT_SOURCE_DIR}/src/*.c")
 file(GLOB_RECURSE "${PROJECT_NAME}HeaderFiles" "${CMAKE_CURRENT_SOURCE_DIR}/include/*.h")
-file(GLOB_RECURSE "${PROJECT_NAME}AssetFiles" RELATIVE "${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}" "${CMAKE_CURRENT_SOURCE_DIR}/Assets/**/*" CMAKE_CONFIGURE_DEPENDS)
-add_library(${PROJECT_NAME} STATIC "${PROJECT_NAME}SourceFiles" "${PROJECT_NAME}HeaderFiles")
+file(GLOB_RECURSE "${PROJECT_NAME}AssetFiles" RELATIVE "${CMAKE_CURRENT_SOURCE_DIR}" "${CMAKE_CURRENT_SOURCE_DIR}/Assets/**/*" CMAKE_CONFIGURE_DEPENDS)
+
+# message(STATUS "Sources")
+# foreach(AssetFile IN LISTS "${PROJECT_NAME}SourceFiles")
+#     message(STATUS ${AssetFile})
+# endforeach(AssetFile)
+# 
+# message(STATUS "Headers")
+# foreach(AssetFile IN LISTS "${PROJECT_NAME}HeaderFiles")
+#     message(STATUS ${AssetFile})
+# endforeach(AssetFile)
+# 
+# message(STATUS "Assets")
+# foreach(AssetFile IN LISTS "${PROJECT_NAME}AssetFiles")
+#     message(STATUS ${AssetFile})
+# endforeach(AssetFile)
+
+add_library(${PROJECT_NAME} ${CStandardLibrarySourceFiles})
 target_include_directories(${PROJECT_NAME} PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include")
 target_link_directories(${PROJECT_NAME} PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include")
+
 source_group(
     TREE "${PROJECT_SOURCE_DIR}/${PROJECT_NAME}"
     PREFIX "Header Files"
     FILES "${PROJECT_NAME}HeaderFiles")
+
 set_target_properties(${PROJECT_NAME} PROPERTIES
     ARCHIVE_OUTPUT_DIRECTORY_DEBUG "${CMAKE_BINARY_DIR}/Debug/${a_outputDirectory}"
     ARCHIVE_OUTPUT_DIRECTORY_RELEASE "${CMAKE_BINARY_DIR}/Release/${a_outputDirectory}"
@@ -26,7 +45,8 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
     LIBRARY_OUTPUT_DIRECTORY_RELEASE "${CMAKE_BINARY_DIR}/Release/${a_outputDirectory}"
     RUNTIME_OUTPUT_DIRECTORY_DEBUG "${CMAKE_BINARY_DIR}/Debug/${a_outputDirectory}"
     RUNTIME_OUTPUT_DIRECTORY_RELEASE "${CMAKE_BINARY_DIR}/Release/${a_outputDirectory}")
-foreach(AssetFile in LISTS "${PROJECT_NAME}AssetFiles")
-    configure_file("${CMAKE_CURRENT_SOURCE_DIR}/${AssetFile}" "${CMAKE_BINARY_DIR}/Debug/${a_outputDirectory}/Assets/${AssetFile}")
-    configure_file("${CMAKE_CURRENT_SOURCE_DIR}/${AssetFile}" "${CMAKE_BINARY_DIR}/Release/${a_outputDirectory}/Assets/${AssetFile}")
-endforeach()
+
+foreach(AssetFile IN LISTS "${PROJECT_NAME}AssetFiles")
+    configure_file("${CMAKE_CURRENT_SOURCE_DIR}/${AssetFile}" "${CMAKE_BINARY_DIR}/Debug/${a_outputDirectory}/${AssetFile}")
+    configure_file("${CMAKE_CURRENT_SOURCE_DIR}/${AssetFile}" "${CMAKE_BINARY_DIR}/Release/${a_outputDirectory}/${AssetFile}")
+endforeach(AssetFile)
