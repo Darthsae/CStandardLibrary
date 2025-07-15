@@ -27,7 +27,7 @@ file(GLOB_RECURSE "${PROJECT_NAME}AssetFiles" RELATIVE "${CMAKE_CURRENT_SOURCE_D
 #     message(STATUS ${AssetFile})
 # endforeach(AssetFile)
 
-add_library(${PROJECT_NAME} ${CStandardLibrarySourceFiles})
+add_library(${PROJECT_NAME}  ${${PROJECT_NAME}SourceFiles} ${${PROJECT_NAME}HeaderFiles})
 target_include_directories(${PROJECT_NAME} PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include")
 target_link_directories(${PROJECT_NAME} PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include")
 
