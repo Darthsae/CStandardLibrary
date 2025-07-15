@@ -1,4 +1,4 @@
-#include "EventHandler.h"
+#include <EventHandler.h>
 
 void InitEventHandler(EventHandler* a_handler) {
     a_handler->hooks = malloc(0);

@@ -1,4 +1,4 @@
-#include "random.h"
+#include <random.h>
 #include <stdlib.h>
 
 uint32_t RandomUniformUInt32(uint32_t a_min, uint32_t a_max) {

@@ -1,4 +1,4 @@
-#include "Dict.h"
+#include <Collections/Dict.h>
 
 void InitDictEntry(DictEntry* a_dictEntry, uint64_t a_key) {
     a_dictEntry->key = a_key;
