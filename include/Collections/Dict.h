@@ -2,7 +2,6 @@
 #define DICT_H
 #include <stdio.h>
 #include <stdint.h>
-#include <windows.h>
 #include <CString.h>
 #include <FatPtr.h>
 

@@ -2,7 +2,6 @@
 #define BINARY_TREE_H
 #include <stdio.h>
 #include <stdint.h>
-#include <windows.h>
 #include <stdbool.h>
 #include <FatPtr.h>
 

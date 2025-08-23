@@ -1,6 +1,5 @@
 #ifndef EVENT_HANDLER_H
 #define EVENT_HANDLER_H
-#include <Windows.h>
 #include <stdint.h>
 typedef void* (*GenericFnptr)(void*);
 
