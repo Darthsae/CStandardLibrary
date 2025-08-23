@@ -1,6 +1,4 @@
-#if defined(_WIN32) || defined(_WIN64)
-#include <random.h>
-#endif
+#include <Random.h>
 #include <stdlib.h>
 
 #ifdef __cplusplus
