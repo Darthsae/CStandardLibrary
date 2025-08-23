@@ -2,6 +2,7 @@
 #define INT32_LIST_H
 #include <stdint.h>
 #include <stdbool.h>
+#include <stdlib.h>
 
 /// @struct Int32List
 /// @brief A dynamic list of int32_t.

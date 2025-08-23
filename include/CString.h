@@ -3,6 +3,8 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <string.h>
+#include <stdlib.h>
+
 /// @file String.h
 /// @brief Defines the String struct and functions to modify them.
 ///

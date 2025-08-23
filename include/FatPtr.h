@@ -2,6 +2,7 @@
 #ifndef FAT_PTR_H
 #define FAT_PTR_H
 #include <stdint.h>
+#include <stdlib.h>
 
 /// @struct FatPtr
 /// @brief A Fat Pointer holding arbitrary data and the size of the data.

@@ -1,6 +1,8 @@
 #ifndef EVENT_HANDLER_H
 #define EVENT_HANDLER_H
 #include <stdint.h>
+#include <stdlib.h>
+
 typedef void* (*GenericFnptr)(void*);
 
 /// @struct EventHandler

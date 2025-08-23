@@ -2,6 +2,7 @@
 #define STRING_LIST_H
 #include <stdint.h>
 #include <stdbool.h>
+#include <stdlib.h>
 #include <CString.h>
 
 /// @struct StringList
